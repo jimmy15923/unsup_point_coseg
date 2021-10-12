@@ -1,8 +1,11 @@
 # Unsupervised Point Cloud Object Co-segmentation by Co-Contrastive learning and Mutual Attention Sampling
 
 This repository is the implementation of ICCV 2021 paper (Oral) **Unsupervised Point Cloud Object Co-segmentation by using Co-Contrastive learning and Mutual Attention Sampling**.
-![block images](figure/teaser.pdf)
+![teaser](figure/teaser.png)
 
+| Input | ![raw1](figure/1004_raw.gif) | ![raw2](figure/1245_raw.gif)  | ![raw3](figure/75_raw.gif) |
+| -------- | -------- | -------- | -------- |
+| Output   | ![img1](figure/1004_raw.gif)     | ![img2](figure/1245.gif)     | ![img3](figure/75.gif)     |
 ## Requirements
 
 We strongly recommand using the [Docker image](https://github.com/itailang/SampleNet/tree/master/registration#installation) provided by SampleNet [Lang, et al. CVPR'2020](https://arxiv.org/abs/1912.03663).
