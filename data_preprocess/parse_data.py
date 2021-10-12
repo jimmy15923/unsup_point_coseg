@@ -36,7 +36,7 @@ if __name__ == "__main__":
 #             if label == 8: # get chair
                 if not os.path.exists(f"{args.out_dir}/{name}"):
                     os.makedirs(f"{args.out_dir}/{name}")                    
-#                     res = (o3d.io.write_point_cloud(f"{args.out_dir}/{name}/chair_{i}.pcd", object_pcd))
+
                 h5_file_path = f"{args.out_dir}/{name}/{obj_cate[obj_class]}_{i}.h5"
     
                 if not os.path.exists(h5_file_path):
@@ -60,22 +60,10 @@ if __name__ == "__main__":
                     room_pcd = o3d.geometry.PointCloud()
                     room_pcd.points = o3d.utility.Vector3dVector(room_points)
 
-#                     distance = np.asarray(room_pcd.compute_point_cloud_distance(pcd))
+
                     xyz_diff = room_points - center_point
                     distance = np.sum(xyz_diff ** 2, axis=1)
         
-                    ## By scale
-#                     n_bg_points = chair_points.shape[0] * args.bg_scale  
-#                     if n_bg_points < 512:
-#                         continue
-                        
-#                     if n_bg_points > 20480:
-#                         n_bg_points = 20480
-                    
-#                     bg_points = room_points[distance.argsort()[:n_bg_points]]
-#                     bg_colors = room_colors[distance.argsort()[:n_bg_points]]
-#                     bg_labels = room_labels[distance.argsort()[:n_bg_points]]      
-#                     print(obj_cate[obj_class], bg_points.shape)
               
                     ## By radius
                     x1, x2 = np.min(chair_points[:,0]), np.max(chair_points[:,0])
@@ -83,8 +71,8 @@ if __name__ == "__main__":
                     z1, z2 = np.min(chair_points[:,2]), np.max(chair_points[:,2])
                     w, h, d = x2 - x1, y2 - y1, z2 - z1
 
-                    long_side = np.mean([w, h, d])
-#                     long_side *= 1.25
+#                     long_side = np.mean([w, h, d])
+                    long_side *= 1.25
     
                     cond = distance < long_side
                     n_bg_points = np.sum(cond)
@@ -101,11 +89,7 @@ if __name__ == "__main__":
                     
 
                     print(obj_cate[obj_class], n_bg_points)
-#                     object_with_bg_points = points[cond]
-#                     object_with_bg_colors = colors[cond]
-#                     object_with_bg_labels = labels[cond]
-                          
-#                     print(obj_cate[obj_class], object_with_bg_labels.sum())   
+
                     object_with_bg_points = np.concatenate([bg_points, chair_points])
                     object_with_bg_colors = np.concatenate([bg_colors, chair_colors])
                     object_with_bg_labels = np.concatenate([bg_labels, chair_labels])
