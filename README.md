@@ -1,6 +1,6 @@
 # Unsupervised Point Cloud Object Co-segmentation by Co-Contrastive learning and Mutual Attention Sampling
 
-This repository is the implementation of ICCV 2021 paper (Oral) **Unsupervised Point Cloud Object Co-segmentation by using Co-Contrastive learning and Mutual Attention Sampling**.
+This repository is the implementation of ICCV 2021 paper (Oral): **Unsupervised Point Cloud Object Co-segmentation by using Co-Contrastive learning and Mutual Attention Sampling**.
 ![teaser](figure/teaser.png)
 
 | Input | ![raw1](figure/1004_raw.gif) | ![raw2](figure/1245_raw.gif)  | ![raw3](figure/75_raw.gif) |
@@ -42,7 +42,7 @@ python test.py --config=work_dirs/raw/scanobj/chair.yaml
 ```
 
 ## Visualization
-To genereate the GIF file in the README.md, run the command. Please note that only open3D with local monitor is supported.
+Run the command to genereate the GIF file in the README.md. Please note that only open3D with local monitor is supported.
 
 ```bash
 python visualize.py
