@@ -1,6 +1,6 @@
 # Unsupervised Point Cloud Object Co-segmentation by Co-Contrastive learning and Mutual Attention Sampling
 
-This repository is the implementation of ICCV 2021 paper (Oral): **Unsupervised Point Cloud Object Co-segmentation by using Co-Contrastive learning and Mutual Attention Sampling**.
+This repository is the implementation of [ICCV 2021 paper (Oral)](https://openaccess.thecvf.com/content/ICCV2021/papers/Yang_Unsupervised_Point_Cloud_Object_Co-Segmentation_by_Co-Contrastive_Learning_and_Mutual_ICCV_2021_paper.pdf): **Unsupervised Point Cloud Object Co-segmentation by using Co-Contrastive learning and Mutual Attention Sampling**.
 ![teaser](figure/teaser.png)
 
 ##  Point Cloud Object Co-segmentation 
