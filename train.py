@@ -163,7 +163,7 @@ def train(args, io):
             embeddings = torch.cat([object_features, background_features], dim=0)
             
             obj_labels = torch.cat([torch.zeros(object_features.shape[0]).long(),
-                                torch.arange(1, embeddings.shape[0]-object_features.shape[0]+1)]).long().cuda()
+                                torch.arange(1, background_features.shape[0]+1)]).long().cuda()
 
             obj_loss = obj_nxt_loss(embeddings, obj_labels)   
 
