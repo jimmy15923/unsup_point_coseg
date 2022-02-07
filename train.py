@@ -237,39 +237,6 @@ def train(args, io):
               'work_dirs/{}/{}/{}/{}_run_iou{:.2f}_f{:.2f}.log'.format(args.permute, cfg.EXP.NAME, 
                cat_to_label[args.obj], str(datetime.now())[:19], best_iou*100, best_f1*100))
                
-   
-    sampler.eval()
-    y_preds = np.zeros(shape=(len(test_loader), cfg.TRAIN.N_POINTS))
-    bg_preds = np.zeros(shape=(len(test_loader), cfg.TRAIN.N_POINTS))
-    points = np.zeros(shape=(len(test_loader), cfg.TRAIN.N_POINTS, 3))
-    y_trues = np.zeros(shape=(len(test_loader), cfg.TRAIN.N_POINTS))
-
-    with torch.no_grad():
-        for n_spread in range(10, 60, 10):
-            for i, (coord, label) in enumerate(test_loader):
-                # Inference  
-                coord = coord.to(device)    
-                coord, fps_idx = farthest_pts_sampling_tensor(coord, cfg.TRAIN.N_POINTS, return_sampled_idx=True)
-                
-                _, y_pred = sampler(coord)
-                _, bg_pred = sampler(coord, fg=False)
-
-                _, idx = KNN(n_spread, transpose_mode=False)(coord.permute(0,2,1).contiguous(), y_pred.permute(0,2,1).contiguous())
-                idx = idx.cpu().detach().numpy()
-                best_idx = np.unique(idx)   
-                y_preds[i][best_idx] = 1
-
-                _, bgidx = KNN(n_spread, transpose_mode=False)(coord.permute(0,2,1).contiguous(), bg_pred.permute(0,2,1).contiguous())
-                bgidx = bgidx.cpu().detach().numpy()
-                best_bgidx = np.unique(bgidx)   
-                bg_preds[i][best_bgidx] = 1                
-                
-                y_trues[i] = label[0][fps_idx[0].long()].cpu().numpy()
-                points[i] = coord[0].cpu().numpy()
-                
-            iou = jaccard_score(y_trues.flatten(), y_preds.flatten())    
-            scipy.io.savemat('work_dirs/{}/{}/{}/results_n{}_{}.mat'.format(args.permute, cfg.EXP.NAME, cat_to_label[args.obj], n_spread, str(iou)[:4]),
-                            {"y_preds":y_preds,  "coord":points, "y_trues":y_trues, "bg_preds":bg_preds})     
 
 if __name__ == "__main__":
     # Training settings
