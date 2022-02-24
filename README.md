@@ -51,3 +51,16 @@ Run the command to genereate the GIF file in the README.md. Please note that onl
 ```bash
 python visualize.py
 ```
+
+## Citation
+If you find our work useful in your research, please consider citing our paper:
+```
+@inproceedings{yang2021unsupervised,
+  title={Unsupervised Point Cloud Object Co-segmentation by Co-contrastive Learning and Mutual Attention Sampling},
+  author={Yang, Cheng-Kun and Chuang, Yung-Yu and Lin, Yen-Yu},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={7335--7344},
+  year={2021}
+}
+```
+
