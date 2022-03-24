@@ -22,6 +22,7 @@ pip install -r requirements.txt
 
 ## Data Preparation
 Download the ScanObjectNN [here](https://github.com/hkust-vgd/scanobjectnn) and S3DIS [here](https://shapenet.cs.stanford.edu/media/indoor3d_sem_seg_hdf5_data.zip).
+We follow [JSIS3D](https://github.com/pqhieu/jsis3d/blob/master/scripts/prepare_h5.py) to process the raw S3DIS first.
 
 And run the pre-process data to generate the S3DIS object dataset.
 
