@@ -61,7 +61,7 @@ class SampleNet(nn.Module):
         self.bn_fc3 = nn.BatchNorm1d(256)
         self.bn_fc4 = nn.BatchNorm1d(3 * num_out_points)
         
-        self.mutual_attention = NONLocalBlock1D_mutual(256, sub_sample=False, bn_layer=True)            
+        self.mutual_attention = NONLocalBlock1D_mutual(bottleneck_size, sub_sample=False, bn_layer=True)            
 
         # projection and matching
         self.project = SoftProjection(
