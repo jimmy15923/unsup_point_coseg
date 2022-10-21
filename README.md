@@ -30,6 +30,9 @@ And run the pre-process data to generate the S3DIS object dataset.
 python data_preprocess/parse_data.py
 ```
 
+## Pre-training
+We utilize a classification model pre-trained on ModelNet40 as features extractor. You can run `pretrain.py` for training. Or find the pre-trained weight here [link](https://drive.google.com/drive/folders/1rVrYilP5hMXu6BnRVBH4jgxuTk3jFykm?usp=sharing)
+
 
 ## Training
 
